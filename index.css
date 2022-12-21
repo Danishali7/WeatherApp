@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h4 {
+  font-size: 3rem;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+}
+li {
+  font-size: 1.8rem;
+}
+.header {
+  min-height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-color: rgba(0, 0, 0, 0.2);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-blend-mode: multiply;
+}
+
+/* ====================
+    CLOCK
+=======================*/
+
+.clockStyl {
+  /* background-color: violet; */
+  font-size: 3rem;
+}
+.clock {
+  color: white;
+  /* background-color: #fff; */
+  font-weight: 400;
+  font-family: "Noto Sans", sans-serif;
+}
+.clock .dots {
+  font-size: 3rem;
+}
+.clock .amPm {
+  font-size: 1.6rem;
+}
+
+.date {
+  color: white;
+  font-size: 1.4rem;
+}
+/* ====================
+    search box
+=======================*/
+
+.form-control {
+  width: 26rem;
+  font-size: 1.6rem;
+}
+
+.btn {
+  font-size: 1.6rem;
+}
+
+.main {
+  width: 85vw;
+  margin-top: 5rem;
+}
+
+th {
+  color: aliceblue;
+  font-size: 1.6rem;
+}
+td {
+  font-size: 1.4rem;
+}
+
+.daysForecast {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-shadow: 0.1rem 0.5rem 1rem rgba(0, 0, 0, 0.7);
+}
+li span {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.card-header {
+  background-color: rgb(255, 186, 58);
+}
+
+.location-card-header {
+  background-color: rgb(255, 47, 113);
+}
+.conditionName {
+  font-size: 1.6rem;
+  color: rgb(255, 47, 113);
+  letter-spacing: 0.2rem;
+  font-weight: 500;
+}
+
+/* ===================
+    Media Query
+=================== */
+
+@media screen and (max-width: 964px) {
+  h4 {
+    font-size: 2rem;
+  }
+  .container {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    align-items: center;
+  }
+  .container .containerContent {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0rem;
+  }
+  .form {
+    min-width: 80%;
+    /* background-color: #fff; */
+    justify-content: center;
+  }
+  .input {
+    /* background-color: red; */
+    width: 90%;
+  }
+  .btn {
+    min-width: 10%;
+  }
+}
+@media screen and (max-width: 864px) {
+  .main-content {
+    flex-direction: column;
+  }
+  .col {
+    width: 80%;
+  }
+}
