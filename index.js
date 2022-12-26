@@ -187,7 +187,11 @@ const weatherDetails = (city) => {
 
 formEl.addEventListener("submit", (e) => {
   e.preventDefault();
-  weatherDetails(formInp.value);
+  if (formInp.value === "") {
+    return;
+  } else {
+    weatherDetails(formInp.value);
+  }
 });
 
 weatherDetails("Delhi");
