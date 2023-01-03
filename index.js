@@ -4,7 +4,7 @@ let secEl = document.querySelector(".seconds");
 let amPmEl = document.querySelector(".amPm");
 
 let today = document.querySelector(".day");
-let date = document.querySelector(".date");
+let todayDate = document.querySelector(".todayDate");
 let month = document.querySelector(".month");
 
 let locationEl = document.querySelector(".locationEl");
@@ -14,6 +14,7 @@ let tableEl = document.querySelector(".table-striped");
 
 let formEl = document.querySelector(".form");
 let formInp = document.querySelector(".input");
+let main = document.querySelector(".main");
 
 const digitalClock = () => {
   const time = new Date();
@@ -40,20 +41,29 @@ setInterval(() => {
 }, 1000);
 digitalClock();
 
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 const setDate = () => {
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
   const dateAndTime = new Date();
-  today.innerText = days[dateAndTime.getDay()];
-  //   date.innerText = dateAndTime.getDate();
-  month.innerText = dateAndTime.getMonth() + 1;
+  if (dateAndTime.getMonth() < 11) {
+    month.innerHTML = `0${dateAndTime.getMonth() + 1}`;
+  } else {
+    month.innerHTML = dateAndTime.getMonth() + 1;
+  }
+  today.innerHTML = days[dateAndTime.getDay()];
+
+  if (dateAndTime.getDate() < 10) {
+    todayDate.innerHTML = `0${dateAndTime.getDate()}`;
+  } else {
+    todayDate.innerHTML = dateAndTime.getDate();
+  }
 };
 setDate();
 
@@ -65,16 +75,14 @@ const weatherDetails = (city) => {
       "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
     },
   };
-
   fetch(
     `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}&days=3`,
     options
   )
     .then((response) => response.json())
-    .then(
-      (data) => (
-        ({ maxtemp_c, mintemp_c, maxwind_mph, avghumidity } =
-          data.forecast.forecastday[1].day),
+    .then((data) => {
+      ({ maxtemp_c, mintemp_c, maxwind_mph, avghumidity } =
+        data.forecast.forecastday[1].day),
         ({
           icon: currIcon,
 
@@ -180,9 +188,17 @@ const weatherDetails = (city) => {
       <td>${data.forecast.forecastday[2].day.mintemp_c} <sup>o</sup> C</td>
       <td>${data.forecast.forecastday[2].day.daily_chance_of_rain}%</td>
     </tr>
-      </tbody>`)
-      )
-    );
+      </tbody>`);
+    })
+    .catch((err) => {
+      if (err) {
+        main.innerHTML = `<div class="notfound">NOT FOUND</div>`;
+        setTimeout(() => {
+          location.reload();
+        }, 550);
+        console.log(err);
+      }
+    });
 };
 
 formEl.addEventListener("submit", (e) => {
@@ -192,6 +208,6 @@ formEl.addEventListener("submit", (e) => {
   } else {
     weatherDetails(formInp.value);
   }
+  formInp.value = "";
 });
-
-weatherDetails("Delhi");
+weatherDetails("noida");

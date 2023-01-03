@@ -146,6 +146,20 @@ li span {
     flex-direction: column;
   }
   .col {
-    width: 80%;
+    width: 100%;
   }
+}
+@media screen and (max-width: 439px) {
+  .daysForecast {
+    display: none;
+  }
+  .table {
+    display: none;
+  }
+}
+
+.notfound {
+  font-size: 3rem;
+  background-color: rgb(194, 194, 194);
+  text-align: center;
 }
