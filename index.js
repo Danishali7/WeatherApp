@@ -210,4 +210,5 @@ formEl.addEventListener("submit", (e) => {
   }
   formInp.value = "";
 });
+// default
 weatherDetails("noida");

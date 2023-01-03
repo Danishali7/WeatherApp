@@ -157,7 +157,7 @@ li span {
     display: none;
   }
 }
-
+/* when not found */
 .notfound {
   font-size: 3rem;
   background-color: rgb(194, 194, 194);
